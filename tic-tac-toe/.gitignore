@@ -11,10 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
-*.json
 eslint.config.js
 vite.config.js
 ../.idea
+README.md
 
 # Editor directories and files
 .vscode/*

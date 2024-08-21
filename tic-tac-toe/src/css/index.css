@@ -1,0 +1,7 @@
+html, body {
+    height: 1200px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background: #313338;
+}
