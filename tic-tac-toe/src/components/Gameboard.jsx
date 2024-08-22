@@ -1,19 +1,20 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import '../css/App.css'
 import xImage from '../assets/x.jpg';
 import oImage from '../assets/o.jpg';
+import Score from "./Score.jsx";
 
 function Field({index, slot, step, winner}) {
     const [isFlipped, setIsFlipped] = useState(false);
 
     function click() {
-        if (!winner) {
+        if (!winner && !slot) {
             setIsFlipped(true);
             step();
         }
     }
 
-    const winnerLine = winner && winner.line.includes(index);
+    const winnerLine = winner && winner !== 'tie' && winner.line.includes(index);
     const fieldColor = slot === "X" ? 'xColor' : 'oColor';
 
     return (
@@ -31,6 +32,8 @@ function Field({index, slot, step, winner}) {
 export default function Gameboard() {
     const [result, setResult] = useState(Array(9).fill(null));
     const [xMove, setXMove] = useState(true);
+    const [score, setScore] = useState([0, 0]);
+    const [winner, setWinner] = useState(null);
 
     function stepClick(index) {
         if (result[index] || winnerCalculation(result)) { return; }
@@ -40,10 +43,28 @@ export default function Gameboard() {
         setXMove(!xMove);
     }
 
-    const winner = winnerCalculation(result);
+    useEffect(() => {
+        const isWinner = winnerCalculation(result);
+        setWinner(isWinner);
+    }, [result]);
+
+    useEffect(() => {
+        if (winner && winner !== 'tie') {
+            setScore(prevScore => {
+                const newScore = [...prevScore];
+                if (winner.player === 'X') {
+                    newScore[0]++;
+                } else {
+                    newScore[1]++;
+                }
+                return newScore;
+            });
+        }
+    }, [winner]);
 
     return (
         <>
+            <Score score={score} className="scoreboard"/>
             <div className="board">
                 <div className="row">
                     <Field index={0} slot={result[0]} step={() => stepClick(0)} winner={winner} />
@@ -61,13 +82,21 @@ export default function Gameboard() {
                     <Field index={8} slot={result[8]} step={() => stepClick(8)} winner={winner}/>
                 </div>
             </div>
-            {winner && (
-                <div className="winner">
-                    <h1 className="winner-title">WINNER {winner.player === 'X' ? 'BEAVER' : 'CAPYBARA'}</h1>
-                    <h3 className="winner-subtitle">(PLAYER {winner.player})</h3>
-                    <img className="winner-image" src={winner.player === 'X' ? xImage : oImage} alt=""/>
-                </div>
-            )}
+            {winner ? (
+                winner !== 'tie' ? (
+                    <div className="winner">
+                        <h1 className="winner-title">WINNER {winner.player === 'X' ? 'BEAVER' : 'CAPYBARA'}</h1>
+                        <h3 className="winner-subtitle">(PLAYER {winner.player})</h3>
+                        <Score score={score} className="scoreboard-no-background" />
+                        <img className="winner-image" src={winner.player === 'X' ? xImage : oImage} alt="" />
+                    </div>
+                ) : (
+                    <div className="winner">
+                        <h1 className="winner-title">NO WINNER – TIE</h1>
+                        <Score score={score} className="scoreboard-no-background"/>
+                    </div>
+                )
+            ) : null}
         </>
     );
 }
@@ -84,7 +113,7 @@ function winnerCalculation(result) {
         [2, 4, 6]
     ];
 
-    for (let i=0; i<victoryOptions.length; i++) {
+    for (let i = 0; i < victoryOptions.length; i++) {
         let [a, b, c] = victoryOptions[i];
         if (result[a] && result[a] === result[b] && result[a] === result[c]) {
             return {
@@ -92,6 +121,9 @@ function winnerCalculation(result) {
                 line: [a, b, c]
             };
         }
+    }
+    if (!result.includes(null)) {
+        return 'tie';
     }
     return null;
 }

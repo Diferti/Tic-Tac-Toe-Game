@@ -78,7 +78,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,14 +87,14 @@
     text-align: center;
 }
 .winner-title {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Serif', sans-serif;
     margin: 0;
     font-size: 48px;
     color: #E5E7E9;
     font-weight: 900;
 }
 .winner-subtitle {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Serif', sans-serif;
     margin: 10px 0 20px;
     font-size: 24px;
     color: #ABB0B7;
@@ -106,4 +106,43 @@
     height: 200px;
     border-radius: 50%;
     border: 3px solid yellow;
+}
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #232428;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(150, 179, 223, 0.1);
+}
+.scoreboard-no-background {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+}
+.xScore {
+    font-family: 'Roboto Serif', sans-serif;
+    text-align: center;
+    color: #AC3F4C;
+}
+.oScore {
+    font-family: 'Roboto Serif', sans-serif;
+    text-align: center;
+    color: #3F51AC;;
+}
+.scoreboard h2, .scoreboard-no-background h2{
+    margin: 0;
+    font-size: 24px;
+}
+.scoreboard p, .scoreboard-no-background p{
+    font-family: 'Fira Code', monospace;
+    margin: 5px 0 0;
+    font-size: 32px;
+    font-weight: 100;
 }
