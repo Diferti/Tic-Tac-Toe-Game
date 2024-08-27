@@ -146,3 +146,44 @@
     font-size: 32px;
     font-weight: 100;
 }
+.align-game-zone {
+    display: flex;
+}
+.panel {
+    height: 610px;
+    width: 475px;
+    margin: 20px 0px 0px 25px;
+    background: #232428;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(150, 179, 223, 0.1);
+}
+.panel-headers {
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgba(171, 176, 183, 0.3);
+}
+.panel-headers .inactive-header,
+.panel-headers .active-header {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+.panel-headers .inactive-header h1 {
+    font-size: 20px;
+    color: #ABB0B7;
+    margin-left: 3px;
+    transition: font-size 0.3s ease-in-out, color 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+}
+.panel-headers .active-header h1 {
+    font-size: 24px;
+    color: #E5E7E9;
+    margin-left: 5px;
+    transition: font-size 0.3s ease-in-out, color 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+}
+.panel-headers .inactive-header svg,
+.panel-headers .active-header svg {
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, color 0.3s ease-in-out;
+}
