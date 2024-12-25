@@ -6,8 +6,7 @@ function App() {
     return (
         <>
             <div className="align-game-zone">
-                <div><Gameboard/></div>
-                <SidePanel/>
+                <Gameboard/>
             </div>
         </>
     );

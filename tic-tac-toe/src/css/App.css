@@ -107,6 +107,29 @@
     border-radius: 50%;
     border: 3px solid yellow;
 }
+.winner-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.winner-buttons button {
+    width: 200px;
+    height: 60px;
+    font-family: 'Roboto Serif', sans-serif;
+    font-size: 28px;
+    color: #232428;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    padding: 0px;
+}
+.winner-exit {
+    background: #AC3F4C;
+}
+.winner-next-game {
+    background: #81AC3C;
+}
 .scoreboard {
     display: flex;
     justify-content: space-around;
@@ -156,6 +179,7 @@
     background: #232428;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(150, 179, 223, 0.1);
+    font-family: 'Roboto Serif', sans-serif;
 }
 .panel-headers {
     height: 60px;
@@ -163,6 +187,7 @@
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid rgba(171, 176, 183, 0.3);
+    cursor: pointer;
 }
 .panel-headers .inactive-header,
 .panel-headers .active-header {
@@ -186,4 +211,120 @@
 .panel-headers .inactive-header svg,
 .panel-headers .active-header svg {
     transition: width 0.3s ease-in-out, height 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.panel-content {
+    margin: 15px 20px;
+}
+.panel-content .history {
+    height: 450px;
+}
+.history-row {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    font-family: 'Roboto Serif', sans-serif;
+    margin-bottom: 10px;
+}
+.history-row .number {
+    border: solid 1px white;
+    border-radius: 10px;
+    height: 30px;
+    width: 30px;
+    margin-right: auto;
+}
+.history-row .number p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+    color: #ABB0B7;
+}
+.history-row .history-player {
+    font-size: 18px;
+    margin: 0;
+    margin-right: auto;
+    line-height: 40px;
+    text-align: center;
+    color: #ABB0B7;
+    width: 80px;
+}
+.history-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin-right: 50px;
+}
+.history-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    width: 40px;
+    height: 40px;
+}
+.history-field {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #81AC3C;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.history-field.xColor {
+    background-color: #81AC3C;
+}
+.history-field.oColor {
+    background-color: #81AC3C;
+}
+.history-field span {
+    font-size: 10px;
+    font-weight: 900;
+    color: #232428;
+}
+.history-bottom {
+    margin: 0 -20px;
+    border-top: 1px solid rgba(171, 176, 183, 0.3);
+}
+.history-buttons {
+    margin-top: 20px;
+    margin-left: 55px;
+    margin-right: 55px;
+    display: flex;
+}
+.history-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: 110px;
+    height: 40px;
+    border: 2px solid #81AC3C;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ABB0B7;
+    margin-right: auto;
+    font-weight: bold;
+    font-family: 'Roboto Serif', sans-serif;
+}
+.history-buttons button:first-child {
+    padding-left: 0;
+    padding-right: 11px;
+}
+.history-buttons button:last-child {
+    padding-left: 0;
+    padding-right: 1px;
+}
+.history-row button {
+    font-size: 16px;
+    height: 32px;
+    padding: 0px 15px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: solid 2px #81AC3C;
+    color: #ABB0B7;
 }
